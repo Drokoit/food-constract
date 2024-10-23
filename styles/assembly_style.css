@@ -1,0 +1,116 @@
+.soup, .dish, .drink {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.soup-item, .dish-item, .drink-item {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    padding-left: 40px;
+    padding-right:40px;
+    padding-top:30px;
+    padding-bottom: 30px;
+    border-radius: 35px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 17px 19px 24px rgba(0, 0, 0, 0.13);
+}
+
+.soup-item p, .dish-item p, .drink-item p {
+    margin-top: 10px;
+}
+
+.soup-item:hover, .dish-item:hover, .drink-item:hover { 
+    border: solid 2px tomato;
+    transition: 1s;
+}
+
+.soup-item img, .dish-item img, .drink-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 35px;
+}
+
+.p1, .p2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.p3 {
+    color: gray;
+    font-size: 14px;
+}
+
+.soup-item button, .dish-item button, .drink-item button {
+    background-color: #fce0af    ;
+    display: flex; 
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    border: 0px;
+    align-self: center;
+    border-radius: 10px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right:30px; 
+    line-height: 0px;
+    font-size: 12px;
+    font-weight: 500;
+    position:relative;
+    bottom:15px;
+    cursor:pointer;
+}
+
+.soup-item button:hover, .dish-item button:hover, .drink-item button:hover {
+    background-color:#d8843b;
+    color:white;
+}
+
+.nav {
+    display: flex;
+    gap: 15px;
+}
+
+@media (max-width: 800px) {
+    .soup,.dish,.drink {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        text-align: center; 
+    }
+    main{
+        margin-top: 50px;
+    }
+    h2{
+        text-align: center;
+    }
+
+    nav h2 {
+        flex-direction: column; 
+        text-align: center; 
+    }
+
+    nav a {
+        text-align: center;
+        font-size: 16pt; 
+    }
+    .soup, .dish, .drink {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px){
+    .soup, .dish, .drink{
+        grid-template-columns: repeat(1,1fr);
+    }
+    main{
+        margin-top: 100px;
+    }
+}
+

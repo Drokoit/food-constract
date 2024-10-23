@@ -1,0 +1,129 @@
+/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+header {
+    background-color: #f1eee9;
+    padding: 20px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: tomato;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.dish-item,
+.soup-item,
+.drink-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.dish-item div,
+.soup-item div,
+.drink-item div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border-radius: 35px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.dish-item img,
+.soup-item img,
+.drink-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 35px;
+}
+
+.dish-item p:first-of-type,
+.soup-item p:first-of-type,
+.drink-item p:first-of-type {
+    font-size: 1.2em;
+    color: #ff6347;
+}
+
+.dish-item p:nth-of-type(2),
+.soup-item p:nth-of-type(2),
+.drink-item p:nth-of-type(2) {
+    font-weight: bold;
+    color: #333;
+}
+
+.dish-item p:last-of-type,
+.soup-item p:last-of-type,
+.drink-item p:last-of-type {
+    color: #808080;
+}
+
+.dish-item button,
+.soup-item button,
+.drink-item button {
+    background-color: #f1eee9;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10 px;
+}
+
+.dish-item button:hover,
+.soup-item button:hover,
+.drink-item button:hover {
+    background-color: tomato;
+    border: 2px solid tomato;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
