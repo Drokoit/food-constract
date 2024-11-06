@@ -24,7 +24,6 @@
 
 .soup-item:hover, .dish-item:hover, .drink-item:hover { 
     border: solid 2px tomato;
-    transition: 1s;
 }
 
 .soup-item img, .dish-item img, .drink-item img {
@@ -64,10 +63,10 @@
     cursor:pointer;
 }
 
-.soup-item button:hover, .dish-item button:hover, .drink-item button:hover {
-    background-color:#d8843b;
-    color:white;
+.soup-item:hover button, .dish-item:hover button, .drink-item:hover button{
+    background-color: orange;
 }
+
 
 .nav {
     display: flex;
@@ -114,3 +113,87 @@
     }
 }
 
+.order-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.client-order, .client-data {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-container, .select-container, .checkbox-container {
+    margin-bottom: 20px;
+}
+
+.input-container label, .select-container, .comment-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.input-container input, .input-container textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.time-containert {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.time-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.select-container select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.btn-container button[type="reset"],
+.btn-container button[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-container button:hover {
+    background-color: #0056b3;
+}
+
+.time-container input[type="radio"] {
+    accent-color: #007bff;
+}
+
+.delivery, .available-time {
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+h3 {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .order-form {
+        grid-template-columns: 1fr;
+    }
+}

@@ -3,7 +3,7 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, inistial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Food Construct</title>
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/assembly_style.css">
@@ -92,6 +92,87 @@
             </div>
         </section>
     </main>
+    <h3>Сделать заказ</h3>
+    <form action="https://httpbin.org/post" method="post">
+        <div class="order-form">
+            <div class="client-order">
+                <h4>Ваш заказ</h4>
+                <div class="select-container">
+                    <label for="soup">Суп:</label>
+                    <select id="soup" name="soup" required>
+                        <option value="">--Выберите суп--</option>
+                        <option value="borsh">Борщ</option>
+                        <option value="chicken_soup">Куриный суп</option>
+                        <option value="harcho">Харчо</option>
+                    </select>
+                </div>
+                <div class="select-container">
+                    <label for="main-dish">Главное блюдо:</label>
+                    <select id="main-dish" name="main_dish" required>
+                        <option value="">--Выберите главное блюдо--</option>
+                        <option value="homemade_stew">Жаркое по-домашнему</option>
+                        <option value="pelmeni_with_smetana">Пельмени со сметанной</option>
+                        <option value="steak">Стейк из говяжьей вырезки</option>
+                    </select>
+                </div>
+                <div class="select-container">
+                    <label for="drink">Напиток:</label>
+                    <select id="drink" name="drink" required>
+                        <option value="">--Выберите напиток--</option>
+                        <option value="lemonade">Лимонад</option>
+                        <option value="orange_juice">Апельсиновый сок</option>
+                        <option value="strawberry_milkshake">Молочно-клубничный коктейль</option>
+                    </select>
+                </div>
+                <div class="comment-container">
+                    <label for="comment">Комментарий к заказу</label>
+                    <textarea name="comment" id="comment" cols="32" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="client-data">
+                <h4>Ваши данные</h4>
+                <div class="input-container">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-container">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="newsletter" checked>
+                    <label for="newsletter">Подписка на рассылку:</label>
+                </div>
+                <div class="input-container">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="input-container">
+                    <label for="address">Адрес:</label>
+                    <textarea id="address" name="address" required></textarea>
+                    <p class="delivery">Доставка осуществляется только по Москве</p>
+                </div>
+                <p>Время доставки</p>
+                <div class="radio-container">
+                    <input type="radio" name="delivery-time" id="asap" checked="">
+                    <label for="asap">Как можно скорее</label>
+                </div>
+                <div class="radio-container">
+                    <input type="radio" name="delivery-time" id="specific">
+                    <label for="specific">К указанному времени</label>
+                </div>
+                <div class="time-container">
+                    <label for="time">Укажите время доставки</label>
+                    <input type="time" id="time">
+                    <p class="available-time">Доступное время доставки с 7:00 до 23:00</p>
+                </div>
+                <div class="btn-container">
+                    <button type="reset" id="resetBtn">Сбросить</button>
+                    <button type="submit">Отправить</button>
+                </div>
+            </div>
+            </div>
+        </form>    
     <footer id="footer">
         <section class="call-to-action">
             <p>Позвонить нам <a href="#">+7-000-000-00-00</a></p>

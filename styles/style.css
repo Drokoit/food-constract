@@ -22,10 +22,11 @@ main {
 }
 
 nav {
-    height: 50px;
-    line-height: 50px;
-    font-size: 18px;
-    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-left: 0;
+    justify-content: left;
 }
 
 nav A {
@@ -96,3 +97,40 @@ nav a.active {
     color: tomato;
 }
 
+@media (max-width: 800px) {
+    .img{
+      width: 500px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      text-align: center;
+    }
+    nav {
+      font-size: 14px;
+      flex-direction: column;
+      align-items: center;
+    }  
+    table {
+      font-size: 10px;
+    }
+    .img {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      text-align: center;
+    }
+    nav {
+      font-size: 14px;
+      flex-direction: column;
+      align-items: center;
+    }  
+    table {
+      font-size: 8px;
+    }
+  }
