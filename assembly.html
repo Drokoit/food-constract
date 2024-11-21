@@ -19,115 +19,38 @@
         </nav>
     </header>
     <main>
-        <h2>Выберете суп</h2>
-        <section class="soup">
-            <div class="soup-item">
-                <img src="images/борщ.jpg" alt="Борщ">
-                <p class="p1">350₽</p>
-                <p class="p2">Борщ</p>
-                <p class="p3">250 гр</p>
-                <button>Добавить</button>
-            </div>
-            <div class="soup-item">
-                <img src="images/куриный.jpg" alt="Куриный суп">
-                <p class="p1">240₽</p>
-                <p class="p2">Куриный суп</p>
-                <p class="p3">250 гр</p>
-                <button>Добавить</button>
-            </div>
-            <div class="soup-item">
-                <img src="images/харчо.jpg" alt="Харчо">
-                <p class="p1">320₽</p>
-                <p class="p2">Харчо</p>
-                <p class="p3">300 гр</p>
-                <button>Добавить</button>
-            </div>
+        <section>
+            <h2>Выберете суп</h2>
+            <div class="dish-block" id="soup"></div>
         </section>
-        <h2>Выберете главное блюдо</h2>
-        <section class="dish">
-            <div class="dish-item">
-                <img src="images/жаркое.jpg" alt="Жаркое">
-                <p class="p1">370₽</p>
-                <p class="p2">Жаркое по-домашнему</p>
-                <p class="p3">300 гр</p>
-                <button class="butn">Добавить</button>
-            </div>
-            <div class="dish-item">
-                <img src="images/пельмени.jpg" alt="Пельмени">
-                <p class="p1">220₽</p>
-                <p class="p2">Пельмени со сметанной</p>
-                <p class="p3">200 гр</p>
-                <button>Добавить</button>
-            </div>
-            <div class="dish-item">
-                <img src="images/стейк.jpg" alt="Стейк из говядины">
-                <p class="p1">600₽</p>
-                <p class="p2">Стейк из говяжьей вырезки</p>
-                <p class="p3">300 гр</p>
-                <button>Добавить</button>
-            </div>
+        <section>
+            <h2>Выберете салат или стартер</h2>
+            <div class="dish-block" id="salad"></div>
         </section>
-        <h2>Выберете напиток</h2>
-        <section class="drink">
-            <div class="drink-item">
-                <img src="images/лимонад.jpg" alt="Лимонад">
-                <p class="p1">200₽</p>
-                <p class="p2">Лимонад</p>
-                <p class="p3">340 мл</p>
-                <button>Добавить</button>
-            </div>
-            <div class="drink-item">
-                <img src="images/сок.jpg" alt="Сок">
-                <p class="p1">280₽</p>
-                <p class="p2">Апельсиновый сок</p>
-                <p class="p3">340 мл</p>
-                <button>Добавить</button>
-            </div>
-            <div class="drink-item">
-                <img src="images/коктейль.jpg" alt="Коктейль">
-                <p class="p1">230₽</p>
-                <p class="p2">Молочно-клубничный коктейль</p>
-                <p class="p3">340 мл</p>
-                <button>Добавить</button>
-            </div>
+        <section>
+            <h2>Выберете главное блюдо</h2>
+            <div class="dish-block" id="main_dish"></div>
         </section>
+        <section>
+            <h2>Выберете напиток</h2>
+            <div class="dish-block" id="drink"></div>
+        </section>      
     </main>
     <h3>Сделать заказ</h3>
     <form action="https://httpbin.org/post" method="post">
         <div class="order-form">
             <div class="client-order">
                 <h4>Ваш заказ</h4>
-                <div class="select-container">
-                    <label for="soup">Суп:</label>
-                    <select id="soup" name="soup" required>
-                        <option value="">--Выберите суп--</option>
-                        <option value="borsh">Борщ</option>
-                        <option value="chicken_soup">Куриный суп</option>
-                        <option value="harcho">Харчо</option>
-                    </select>
-                </div>
-                <div class="select-container">
-                    <label for="main-dish">Главное блюдо:</label>
-                    <select id="main-dish" name="main_dish" required>
-                        <option value="">--Выберите главное блюдо--</option>
-                        <option value="homemade_stew">Жаркое по-домашнему</option>
-                        <option value="pelmeni_with_smetana">Пельмени со сметанной</option>
-                        <option value="steak">Стейк из говяжьей вырезки</option>
-                    </select>
-                </div>
-                <div class="select-container">
-                    <label for="drink">Напиток:</label>
-                    <select id="drink" name="drink" required>
-                        <option value="">--Выберите напиток--</option>
-                        <option value="lemonade">Лимонад</option>
-                        <option value="orange_juice">Апельсиновый сок</option>
-                        <option value="strawberry_milkshake">Молочно-клубничный коктейль</option>
-                    </select>
-                </div>
+                <div id="order"></div>
+                <p id="totalPriceDisplay"></p>
                 <div class="comment-container">
                     <label for="comment">Комментарий к заказу</label>
                     <textarea name="comment" id="comment" cols="32" rows="7"></textarea>
                 </div>
+                <input type="hidden" id="soupOrder" name="soup">
+                <input type="hidden" id="saladOrder" name="salad">
+                <input type="hidden" id="main_dishOrder" name="main_dish">
+                <input type="hidden" id="drinkOrder" name="drink">
             </div>
             <div class="client-data">
                 <h4>Ваши данные</h4>
@@ -163,7 +86,7 @@
                 </div>
                 <div class="time-container">
                     <label for="time">Укажите время доставки</label>
-                    <input type="time" id="time">
+                    <input id="time" type="time" name="time" min="07:00" max="23:00" step="300">
                     <p class="available-time">Доступное время доставки с 7:00 до 23:00</p>
                 </div>
                 <div class="btn-container">
@@ -177,6 +100,9 @@
         <section class="call-to-action">
             <p>Позвонить нам <a href="#">+7-000-000-00-00</a></p>
           </section>
-      </footer>
+        </footer>
+        <script src="java_scripts/dishes.js"></script>
+        <script src="java_scripts/display.js"></script>
+        <script src="java_scripts/order.js"></script>
 </body>
 </html>

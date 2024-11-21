@@ -1,10 +1,10 @@
-.soup, .dish, .drink {
+.dish-block {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
-.soup-item, .dish-item, .drink-item {
+.dish-item {
     display: flex;
     flex-direction: column;
     width: 280px;
@@ -18,31 +18,33 @@
     box-shadow: 17px 19px 24px rgba(0, 0, 0, 0.13);
 }
 
-.soup-item p, .dish-item p, .drink-item p {
+.dish-item p {
     margin-top: 10px;
 }
 
-.soup-item:hover, .dish-item:hover, .drink-item:hover { 
+.dish-item:hover { 
     border: solid 2px tomato;
 }
 
-.soup-item img, .dish-item img, .drink-item img {
+.dish-item img {
     width: 100%;
     height: 100%;
     border-radius: 35px;
 }
 
-.p1, .p2 {
+.dish-item p:nth-child(2) {
     font-size: 18px;
-    margin-bottom: 10px;
-}
+  }
+  
+  .dish-item p:nth-child(1) {
+    font-size: 18px;
+  }
+  
+  .dish-item p:nth-child(3) {
+    color: grey;
+  }
 
-.p3 {
-    color: gray;
-    font-size: 14px;
-}
-
-.soup-item button, .dish-item button, .drink-item button {
+.dish-item button {
     background-color: #fce0af    ;
     display: flex; 
     flex-direction: column;
@@ -63,7 +65,7 @@
     cursor:pointer;
 }
 
-.soup-item:hover button, .dish-item:hover button, .drink-item:hover button{
+.dish-item:hover button{
     background-color: orange;
 }
 
@@ -113,10 +115,16 @@
     }
 }
 
+.form {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+}
+
 .order-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .client-order, .client-data {
@@ -124,6 +132,8 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-basis: 45%;
+    margin: 20px;
 }
 
 .input-container, .select-container, .checkbox-container {
@@ -135,7 +145,7 @@
     margin-bottom: 10px;
 }
 
-.input-container input, .input-container textarea {
+.input-container input, .input-container textarea, .comment-container textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
