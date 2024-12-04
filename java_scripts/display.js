@@ -1,37 +1,58 @@
 function displayDishes() {
-    const soupContainer = document.getElementById('soup');
-    const saladContainer = document.getElementById('salad');
-    const mainDishContainer = document.getElementById('main_dish');
-    const drinkContainer = document.getElementById('drink');
-
-    if (!dishes || dishes.length === 0) {
+    if (!dishes?.length) {
         console.error('Массив dishes пуст или не определен');
         return;
     }
-    const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name));
 
-    sortedDishes.forEach(dish => {
-        switch (dish.category.toLowerCase()) {
-            case 'soup':
-                soupContainer.appendChild(createDishElement(dish));
-                break;
-            case 'salad':
-                saladContainer.appendChild(createDishElement(dish));
-                break;
-            case 'main_dish':
-                mainDishContainer.appendChild(createDishElement(dish));
-                break;
-            case 'drink':
-                drinkContainer.appendChild(createDishElement(dish));
-                break;
-        }
+    const containers = {
+        soup: document.getElementById('soup'),
+        salad: document.getElementById('salad'),
+        main_dish: document.getElementById('main_dish'),
+        dessert: document.getElementById('dessert'),
+        drink: document.getElementById('drink'),
+    };
+
+    // Сортируем блюда по имени
+    dishes.sort((a, b) => a.name.localeCompare(b.name));
+
+    // Функция для отображения всех блюд
+    function renderDishes(filteredDishes) {
+        Object.values(containers).forEach(container => container.innerHTML = ''); // Очистить контейнеры
+        filteredDishes.forEach(dish => {
+            const container = containers[dish.category.toLowerCase()];
+            if (container) {
+                container.appendChild(createDishElement(dish));
+            }
+        });
+    }
+
+    // Изначально показываем все блюда
+    renderDishes(dishes);
+
+    // Фильтры по категориям
+    const filterButtons = document.querySelectorAll('.filter-btns button');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Если кнопка уже активна, удаляем активный класс и показываем все блюда
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                renderDishes(dishes); // Отображаем все блюда
+            } else {
+                // Если кнопка не активна, добавляем класс "active" и фильтруем по kind
+                filterButtons.forEach(b => b.classList.remove('active')); // Убираем класс с других кнопок
+                button.classList.add('active'); // Добавляем класс текущей кнопке
+                const filterKind = button.getAttribute('data-kind');
+                const filteredDishes = dishes.filter(dish => dish.kind === filterKind);
+                renderDishes(filteredDishes); // Отображаем отфильтрованные блюда
+            }
+        });
     });
 }
 
 function createDishElement(dish) {
     const dishElement = document.createElement('div');
     dishElement.className = 'dish-item';
-    dishElement.setAttribute('data-dish', dish.keyword)
+    dishElement.setAttribute('data-dish', dish.keyword);
     dishElement.innerHTML = `
         <img src="${dish.image}" alt="${dish.name}">
         <p>${dish.name}</p>
@@ -42,5 +63,4 @@ function createDishElement(dish) {
     return dishElement;
 }
 
-// Инициализация отображения блюд при загрузке страницы
 window.addEventListener('load', displayDishes);

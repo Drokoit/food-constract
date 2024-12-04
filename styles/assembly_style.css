@@ -36,11 +36,11 @@
     font-size: 18px;
   }
   
-  .dish-item p:nth-child(1) {
+.dish-item p:nth-child(1) {
     font-size: 18px;
   }
   
-  .dish-item p:nth-child(3) {
+.dish-item p:nth-child(4) {
     color: grey;
   }
 
@@ -199,6 +199,7 @@
 }
 
 h3 {
+    font-size: 22px;
     text-align: center;
 }
 
@@ -206,4 +207,115 @@ h3 {
     .order-form {
         grid-template-columns: 1fr;
     }
+}
+
+h4 {
+    font-size: 22px;
+}
+
+.p1 {
+    font-size: 30px;
+}
+
+.filter-btns {
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+  }
+  
+.filter-btns button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-size: 16px;
+  }
+  
+.filter-btns button:hover {
+    background-color: orange;
+    border-color: orange;
+    color: #333;
+  }
+  
+.filter-btns button.active {
+    background-color: orange;
+    color: #333;
+    border-color: orange;
+  }
+
+  .combo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.combo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.combo-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.combo-item img {
+  transition: all 0.3s ease-in-out;
+  width: 100px;
+}
+
+.combo-item img:hover {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.combo-item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.combo-item-content span {
+  font-size: 16px;
+}
+
+.combo-item-content p {
+  margin: 0px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 9999;
+}
+
+.notification .close-btn {
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.notification .close-btn:hover {
+    background-color: #e04040;
+    color: yellow;
 }
