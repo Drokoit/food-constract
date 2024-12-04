@@ -1,9 +1,5 @@
 function displayDishes() {
-    if (!dishes?.length) {
-        console.error('Массив dishes пуст или не определен');
-        return;
-    }
-
+    
     const containers = {
         soup: document.getElementById('soup'),
         salad: document.getElementById('salad'),
