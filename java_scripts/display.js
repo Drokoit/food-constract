@@ -3,17 +3,15 @@ function displayDishes() {
     const containers = {
         soup: document.getElementById('soup'),
         salad: document.getElementById('salad'),
-        main_dish: document.getElementById('main_dish'),
+        "main-course": document.getElementById('main-course'),
         dessert: document.getElementById('dessert'),
         drink: document.getElementById('drink'),
     };
 
-    // Сортируем блюда по имени
     dishes.sort((a, b) => a.name.localeCompare(b.name));
 
-    // Функция для отображения всех блюд
     function renderDishes(filteredDishes) {
-        Object.values(containers).forEach(container => container.innerHTML = ''); // Очистить контейнеры
+        Object.values(containers).forEach(container => container.innerHTML = ''); 
         filteredDishes.forEach(dish => {
             const container = containers[dish.category.toLowerCase()];
             if (container) {
@@ -22,24 +20,20 @@ function displayDishes() {
         });
     }
 
-    // Изначально показываем все блюда
     renderDishes(dishes);
 
-    // Фильтры по категориям
     const filterButtons = document.querySelectorAll('.filter-btns button');
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Если кнопка уже активна, удаляем активный класс и показываем все блюда
             if (button.classList.contains('active')) {
                 button.classList.remove('active');
-                renderDishes(dishes); // Отображаем все блюда
+                renderDishes(dishes);
             } else {
-                // Если кнопка не активна, добавляем класс "active" и фильтруем по kind
-                filterButtons.forEach(b => b.classList.remove('active')); // Убираем класс с других кнопок
-                button.classList.add('active'); // Добавляем класс текущей кнопке
+                filterButtons.forEach(b => b.classList.remove('active')); 
+                button.classList.add('active'); 
                 const filterKind = button.getAttribute('data-kind');
                 const filteredDishes = dishes.filter(dish => dish.kind === filterKind);
-                renderDishes(filteredDishes); // Отображаем отфильтрованные блюда
+                renderDishes(filteredDishes); 
             }
         });
     });

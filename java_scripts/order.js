@@ -1,14 +1,14 @@
 let order = {
     soup: null,
     salad: null,
-    main_dish: null,
+    "main-course": null,
     dessert: null,
     drink: null
 };
 let categoryName = {
     soup: "Суп",
     salad: "Салат",
-    main_dish: "Главное блюдо",
+    "main-course": "Главное блюдо",
     dessert: "Десерт",
     drink: "Напиток"
 } 
@@ -31,7 +31,7 @@ function updateOrderDisplay() {
     for (let type in order) {
         if (order[type]) {
             hasDishes = true;
-            const catName = document.createElement('p1')
+            const catName = document.createElement('b')
             catName.textContent = categoryName[type];
             orderSection.appendChild(catName)
             const dishElement = document.createElement('p');
@@ -39,7 +39,7 @@ function updateOrderDisplay() {
             orderSection.appendChild(dishElement);
         }
         else {
-            const catName = document.createElement('p1')
+            const catName = document.createElement('b')
             catName.textContent = categoryName[type];
             orderSection.appendChild(catName)
             const message = document.createElement('p');
@@ -60,8 +60,9 @@ function updateTotalPrice() {
         }
     }
     const totalPriceElement = document.getElementById('totalPriceDisplay');
-    totalPriceElement.textContent = totalPrice > 0 ? `Итого: ${totalPrice} руб.` : '';
+    totalPriceElement.innerHTML = totalPrice > 0 ? `<b>Итого: ${totalPrice} руб.</b>` : '';
 }
+
 
 function updateHiddenInputs() {
     for (let type in order) {
@@ -74,7 +75,7 @@ function resetOrder() {
     order = {
         soup: null,
         salad: null,
-        main_dish: null,
+        "main-course": null,
         dessert: null,
         drink: null
     };

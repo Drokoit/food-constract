@@ -1,11 +1,7 @@
 document.querySelector('form').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Сбор данных о выбранных блюдах
-    const soup = document.getElementById('soupOrder').value;
-    const salad = document.getElementById('saladOrder').value;
-    const mainDish = document.getElementById('main_dishOrder').value;
-    const drink = document.getElementById('drinkOrder').value;
+     const { soup, salad, 'main-course': mainDish, drink } = order;
 
     // Функция для отображения уведомлений
     function showNotification(message) {
