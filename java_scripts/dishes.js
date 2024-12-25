@@ -11,12 +11,12 @@
 //     { keyword: "korean_salad", name: "Салат по-корейски", price: 360, category: "salad", count: "250 гр", image: "images/Korean_salad.jpg", kind: "veg" },
 //     { keyword: "prince_salad", name: "Салат Принц ", price: 330, category: "salad", count: "250 гр", image: "images/PrinceSalad.jpg", kind: "meat"},
 //     { keyword: "bride_salad", name: "Салат Невеста", price: 280, category: "salad", count: "250 гр", image: "images/BrideSalad.jpg", kind: "meat"},
-//     { keyword: "homemade_stew", name: "Жаркое по-домашнему", price: 370, category: "main_dish", count: "300 гр", image: "images/homemade_stew.jpg", kind: "meat"},
-//     { keyword: "mackerel_rolls", name: "Рулетики из скумбрии", price: 220, category: "main_dish", count: "200 гр", image: "images/MackerelRolls.jpg", kind: "fish"},
-//     { keyword: "vegetable_stew", name: "Овощное рагу", price: 350, category: "main_dish", count: "300 гр", image: "images/vegetable_stew.jpg", kind: "veg"},
-//     { keyword: "fish_steak", name: "Рыбный стейк", price: 480, category: "main_dish", count: "250 гр", image: "images/Fish_steak.jpg", kind: "fish"},
-//     { keyword: "risotto_cutlets", name: "Котлеты с ризотто", price: 460, category: "main_dish", count: "350 гр", image: "images/risotto_cutlets.jpg", kind: "meat"},
-//     { keyword: "lohanorizo", name: "Лоханоризо", price: 420, category: "main_dish", count: "400 гр", image: "images/lohanorizo.jpg", kind: "veg"},
+//     { keyword: "homemade_stew", name: "Жаркое по-домашнему", price: 370, category: "main-course", count: "300 гр", image: "images/homemade_stew.jpg", kind: "meat"},
+//     { keyword: "mackerel_rolls", name: "Рулетики из скумбрии", price: 220, category: "main-course", count: "200 гр", image: "images/MackerelRolls.jpg", kind: "fish"},
+//     { keyword: "vegetable_stew", name: "Овощное рагу", price: 350, category: "main-course", count: "300 гр", image: "images/vegetable_stew.jpg", kind: "veg"},
+//     { keyword: "fish_steak", name: "Рыбный стейк", price: 480, category: "main-course", count: "250 гр", image: "images/Fish_steak.jpg", kind: "fish"},
+//     { keyword: "risotto_cutlets", name: "Котлеты с ризотто", price: 460, category: "main-course", count: "350 гр", image: "images/risotto_cutlets.jpg", kind: "meat"},
+//     { keyword: "lohanorizo", name: "Лоханоризо", price: 420, category: "main-course", count: "400 гр", image: "images/lohanorizo.jpg", kind: "veg"},
 //     { keyword: "lemonade", name: "Лимонад", price: 220, category: "drink", count: "340 мл", image: "images/lemonade.jpg", kind: "cold"},
 //     { keyword: "orange_juice", name: "Апельсиновый сок", price: 280, category: "drink", count: "340 мл", image: "images/orange_juice.jpg", kind: "cold"},
 //     { keyword: "strawberry_milkshake", name: "Клубничный коктейль", price: 230, category: "drink", count: "300 мл", image: "images/коктейль.jpg", kind: "cold"},
@@ -30,27 +30,37 @@
 //     { keyword: "donuts1", name: "Пончики (3 штуки)", price: 410, category: "dessert", count: "350 гр", image: "images/donuts.jpg", kind: "medium"},
 //     { keyword: "donuts2", name: "Пончики (6 штук)", price: 650, category: "dessert", count: "700 гр", image: "images/donuts1.jpg", kind: "big"}
 // ];
-let dishes = [];  
+// Массив для хранения данных о блюдах
+let dishes = [];
 
+// Функция загрузки данных о блюдах из API
 function loadDishes() {
+    // URL API для получения данных о блюдах
     const apiUrl = 'https://edu.std-900.ist.mospolytech.ru/labs/api/dishes';
 
+    // Выполнение GET-запроса к API
     fetch(apiUrl)
         .then(response => {
+            // Проверка, что ответ успешен (status >= 200 && < 300)
             if (!response.ok) {
                 throw new Error('Не удалось загрузить данные с сервера');
             }
+            // Преобразование ответа в JSON
             return response.json();
         })
         .then(dishesData => {
+            // Сохранение полученных данных о блюдах
             dishes = dishesData;  
+            // Отображение загруженных данных
             displayDishes();
         })
         .catch(error => {
             console.error('Ошибка при загрузке данных:', error);
         });        
 }
+
+// Событие загрузки страницы
 window.addEventListener('load', () => {
+    // Вызов функции загрузки данных при загрузке страницы
     loadDishes();  
 });
-  

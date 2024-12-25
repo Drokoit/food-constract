@@ -1,5 +1,6 @@
-function displayDishes() {
-    
+// Функция отображения блюд
+function displayDishes() {    
+    // Объект контейнеров для разных категорий блюд
     const containers = {
         soup: document.getElementById('soup'),
         salad: document.getElementById('salad'),
@@ -8,10 +9,11 @@ function displayDishes() {
         drink: document.getElementById('drink'),
     };
 
-    dishes.sort((a, b) => a.name.localeCompare(b.name));
-
+    // Внутренняя функция для рендеринга блюд
     function renderDishes(filteredDishes) {
+        // Очищаем все контейнеры перед рендерингом
         Object.values(containers).forEach(container => container.innerHTML = ''); 
+        // Рендерим каждый фильтрованный рецепт
         filteredDishes.forEach(dish => {
             const container = containers[dish.category.toLowerCase()];
             if (container) {
@@ -20,29 +22,20 @@ function displayDishes() {
         });
     }
 
+    // Вызываем функцию рендеринга с исходным списком блюд
     renderDishes(dishes);
-
-    const filterButtons = document.querySelectorAll('.filter-btns button');
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            if (button.classList.contains('active')) {
-                button.classList.remove('active');
-                renderDishes(dishes);
-            } else {
-                filterButtons.forEach(b => b.classList.remove('active')); 
-                button.classList.add('active'); 
-                const filterKind = button.getAttribute('data-kind');
-                const filteredDishes = dishes.filter(dish => dish.kind === filterKind);
-                renderDishes(filteredDishes); 
-            }
-        });
-    });
 }
 
+// Внутренняя функция создания элемента блюда
 function createDishElement(dish) {
+    // Создаем новый div для блюда
     const dishElement = document.createElement('div');
+    // Присваиваем класс для стилизации
     dishElement.className = 'dish-item';
-    dishElement.setAttribute('data-dish', dish.keyword);
+    // Добавляем атрибуты для идентификации блюда
+    dishElement.setAttribute('data-kind', dish.kind.toLowerCase()); 
+    dishElement.setAttribute('data-dish', dish.keyword);  
+    // Создаем HTML-структуру элемента блюда
     dishElement.innerHTML = `
         <img src="${dish.image}" alt="${dish.name}">
         <p>${dish.name}</p>
@@ -53,4 +46,37 @@ function createDishElement(dish) {
     return dishElement;
 }
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    // Добавляем обработчик клика для каждой кнопки фильтра
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const kind = button.getAttribute('data-kind');
+            const section = button.closest('section');
+            const dishes  = section.querySelectorAll('.dish-item');  
+            
+            // Логика для переключения активности кнопки фильтра
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                dishes.forEach(dish => dish.style.display = 'flex'); 
+            } else {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Фильтруем и отображаем только нужные блюда
+                dishes.forEach(dish => {
+                    if (dish.getAttribute('data-kind') === kind) {
+                        dish.style.display = 'flex';
+                    } else {
+                        dish.style.display = 'none';
+                    }
+                });
+            }
+        });
+    });
+});
+
+// Добавляем обработчик события загрузки окна
 window.addEventListener('load', displayDishes);
